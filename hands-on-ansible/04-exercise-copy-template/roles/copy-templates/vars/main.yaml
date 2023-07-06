@@ -1,0 +1,2 @@
+folder_name: test_folder
+folder_path : "/tmp/{{ folder_name }}"

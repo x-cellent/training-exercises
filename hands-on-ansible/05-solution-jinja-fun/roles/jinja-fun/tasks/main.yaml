@@ -1,0 +1,34 @@
+---
+- name: sort the versions
+  set_fact:
+    sorted_versions: "{{ versions | sort }}"
+
+- name: Display sorted versions
+  debug:
+    var: sorted_versions
+
+- name: Check versions greater than 4.3.3
+  debug:
+    msg: "{{ item }} is greater than 4.3.3"
+  loop: "{{ sorted_versions }}"
+  when: item is version('4.3.3', '>=')
+
+- name: Print yellow fruits
+  debug:
+    msg: "{{ item.fruit }}"
+  loop: "{{ fruits }}"
+  when: item.color == 'yellow'
+
+- name: format to yaml
+  set_fact:
+    test_yaml: "{{ test_json | to_nice_yaml }}"
+
+- debug:
+    var: test_yaml
+
+- name: format json to yaml
+  set_fact:
+    new_json: "{{ test_yaml | to_nice_json }}"
+
+- debug:
+    var: new_json

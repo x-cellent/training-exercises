@@ -1,0 +1,16 @@
+---
+standard_greeting: Hello World!
+
+greetings:
+  - Hello World!
+  - Hallo Welt!
+  - Bonjour monde!
+  - Hei maailma!
+  - Ciao mondo!
+
+greetings_sorted:
+  English: Hello World!
+  German: Hallo Welt!
+  French: Bonjour monde!
+  Finnish: Hei maailma!
+  Italian: Ciao mondo!

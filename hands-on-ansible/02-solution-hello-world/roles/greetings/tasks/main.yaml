@@ -1,0 +1,14 @@
+---
+- name: Greet the world!
+  ansible.builtin.debug:
+    msg: "{{ standard_greeting }}"
+
+- name: Greet the world in different languages!
+  ansible.builtin.debug:
+    var: item
+  loop: "{{ greetings }}"
+
+- name: In our language we say this
+  ansible.builtin.debug:
+    msg: "In our language {{ item.key }} we say {{ item.value }}"
+  loop: "{{ greetings_sorted | dict2items }}"

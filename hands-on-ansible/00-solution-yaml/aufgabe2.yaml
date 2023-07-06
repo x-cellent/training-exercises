@@ -1,0 +1,13 @@
+---
+company:
+  - Abteilung 1
+departments:
+  - name: Abteilung 1
+    person_names:
+      - Mitarbeiter 1
+      - Mitarbeiter 2
+persons:
+  - name: Mitarbeiter 1
+    role: Entwickler
+  - name: Mitarbeiter 2
+    role:

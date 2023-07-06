@@ -1,0 +1,15 @@
+- hosts: all
+  tasks:
+    - name: read the provided user file
+      ansible.builtin.include_vars:
+        file: ../05-exercise-multiple-users/users.yaml
+        name: users
+
+    - name: Ensure all the users are present
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        comment: "{{ item.description }}"
+        shell: "/bin/{{ item.favourite_shell }}"
+        password: "{{ item.initial_password | password_hash('sha512') }}"
+      become: true
+      loop: "{{ users.people }}"

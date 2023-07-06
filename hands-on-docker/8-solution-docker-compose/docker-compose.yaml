@@ -1,0 +1,19 @@
+---
+version: "3.5"
+
+services:
+  identicon:
+    build: identicon
+    image: x-cellent.com/identicon:1.0
+    container_name: identicon
+    ports:
+      - "9090:80"
+      - "9091:81"
+
+  redis:
+    image: redis
+    container_name: redis
+
+  dnmonster:
+    image: amouat/dnmonster:1.0
+    container_name: dnmonster

@@ -1,0 +1,13 @@
+---
+
+user:
+  - name: neo
+    can_update: yes
+  - name: george
+    can_update: no
+  - name: julia
+    can_update: "1"
+  - name: sam
+    can_update: false
+  - name: bob
+    can_update: False #IMPORTANT!

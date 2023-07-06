@@ -1,0 +1,1 @@
+FROM amouat/dnmonster:1.0

@@ -1,0 +1,3 @@
+# some header signifying this file is managed by ansible
+
+%$USERNAME $HOSTNAME=(root):/usr/bin/apt

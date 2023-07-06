@@ -1,0 +1,17 @@
+people:
+  - name: neo
+    description: Neo, our rust dev
+    favourite_shell: sh
+    initial_password: 98vFEDC8E5te
+  - name: george
+    description: George, our python dev
+    favourite_shell: bash
+    initial_password: r2eG9jazqKF5
+  - name: julia
+    description: Julia, our devops girl
+    favourite_shell: bash
+    initial_password: WhereIsMyK8s
+  - name: sam
+    description: Sam, our accountant
+    favourite_shell: bash
+    initial_password: ftx123

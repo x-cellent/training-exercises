@@ -1,0 +1,26 @@
+---
+
+- hosts: zeus,hades
+  tasks:
+    - name: Add the user 'bob'
+      ansible.builtin.user:
+        name: bob
+        comment: Bob, our CIO
+        create_home: true
+        shell: /bin/bash
+        password: "{{ 'barbara' | password_hash('sha512') }}"
+      become: true
+    
+    - name: leave a message for bob
+      ansible.builtin.copy:
+        dest: /home/bob/instructions.txt
+        owner: bob
+        group: bob
+        content: |
+          Hi Bob,
+
+          please dont run `rm -rf --no-preserve-root /` again, no matter what stackoverflow is telling you.
+
+          Best Regards,
+          your admin
+      become: true

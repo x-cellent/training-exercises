@@ -1,0 +1,11 @@
+- hosts: zeus,hades
+  become: true
+  tasks:
+    - name: install zsh package
+      ansible.builtin.package:
+        name: zsh
+
+    - name: Ensure bobs login shell is set to his favourite one
+      ansible.builtin.user:
+        name: bob
+        shell: /bin/zsh

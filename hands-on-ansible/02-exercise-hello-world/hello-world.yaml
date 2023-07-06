@@ -1,0 +1,7 @@
+---
+- hosts: zeus
+  gather_facts: false
+  tasks:
+    - name: Greet the world!
+      ansible.builtin.debug:
+        msg: Hello World!

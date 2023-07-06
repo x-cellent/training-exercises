@@ -1,0 +1,38 @@
+---
+- name: create new folder
+  ansible.builtin.file:
+    path: "{{ folder_path }}"
+    state: directory
+
+- name: copy the example template 
+  ansible.builtin.template:
+    src: hat.j2
+    dest: "{{ folder_path}}/my_hat"
+  vars:
+    hat_color: black
+
+- name: read the file in
+  ansible.builtin.slurp:
+    src: "{{ folder_path}}/my_hat"
+  register: output
+
+- name: print output
+  ansible.builtin.debug:
+    msg: "{{ output['content'] | b64decode }}"
+
+- name: copy the countdown template 
+  ansible.builtin.template:
+    src: countdown.j2
+    dest: "{{ folder_path}}/countdown"
+  vars:
+    hat_color: black
+
+- name: read the file in
+  ansible.builtin.slurp:
+    src: "{{ folder_path}}/countdown"
+  register: output
+
+- name: print output
+  ansible.builtin.debug:
+    msg: "{{ output['content'] | b64decode }}"
+

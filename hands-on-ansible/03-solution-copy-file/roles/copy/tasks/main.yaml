@@ -1,0 +1,19 @@
+---
+- name: create new folder
+  ansible.builtin.file:
+    path: "{{ folder_path }}"
+    state: directory
+
+- name: copy file over
+  ansible.builtin.copy:
+    src: hello-world
+    dest: "{{ folder_path}}/hello_world"
+
+- name: read the file in
+  ansible.builtin.slurp:
+    src: "{{ folder_path}}/hello_world"
+  register: output
+
+- name: print output
+  ansible.builtin.debug:
+    msg: "{{ output['content'] | b64decode }}"

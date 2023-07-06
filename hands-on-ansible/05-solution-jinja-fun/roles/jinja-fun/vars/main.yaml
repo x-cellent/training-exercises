@@ -1,0 +1,16 @@
+---
+versions:
+  - 3.0.1
+  - 1.3.4
+  - 2.8.3
+  - 7.81.11
+
+fruits:
+  - fruit: apple
+    color: red
+  - fruit: pear
+    color: yellow
+  - fruit: grapefruit
+    color: yellow
+
+test_json: ["YAML", 42, false, "42.0", { "version": 1.0 }]

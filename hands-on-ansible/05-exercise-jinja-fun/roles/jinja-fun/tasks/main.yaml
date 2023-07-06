@@ -1,0 +1,8 @@
+---
+- name: sort the versions
+  set_fact:
+    sorted_versions: "{{ versions }}"
+
+- name: Display sorted versions
+  debug:
+    var: sorted_versions
