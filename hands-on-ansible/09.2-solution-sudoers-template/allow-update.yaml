@@ -8,7 +8,7 @@
         name: user
 
     - name: Output user
-      debug:
+      ansible.builtin.debug:
         var: user.user
 
     - name: Template the sudoer file
