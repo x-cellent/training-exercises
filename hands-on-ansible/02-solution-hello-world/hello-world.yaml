@@ -1,5 +1,6 @@
 ---
-- hosts: zeus
+- name: 02-solution-hello-world
+  hosts: zeus
   gather_facts: false
   roles:
     - greetings

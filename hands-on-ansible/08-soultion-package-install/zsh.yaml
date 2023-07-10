@@ -1,7 +1,8 @@
-- hosts: zeus,hades
+- name: 08-soultion-package-install
+  hosts: zeus,hades
   become: true
   tasks:
-    - name: install zsh package
+    - name: Install zsh package
       ansible.builtin.package:
         name: zsh
 

@@ -1,6 +1,7 @@
-- hosts: all
+- name: 09.1-solution-multiple-users
+  hosts: all
   tasks:
-    - name: read the provided user file
+    - name: Read the provided user file
       ansible.builtin.include_vars:
         file: ../05-exercise-multiple-users/users.yaml
         name: users

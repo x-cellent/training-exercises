@@ -1,16 +1,17 @@
 ---
-
-- hosts: all
+- name: 09.2-solution-sudoers-template
+  hosts: all
   tasks:
-    - name: read the provided user file
+    - name: Read the provided user file
       ansible.builtin.include_vars:
         file: ../06-exercise-sudoers-template/users.yaml
         name: user
 
-    - debug:
+    - name: Output user
+      debug:
         var: user.user
 
-    - name: template the sudoer file
+    - name: Template the sudoer file
       ansible.builtin.template:
         src: "{{ playbook_dir }}/sudoers_template.yaml.j2"
         dest: "/etc/sudoers.d/allow_apt_{{ item.name }}.yaml"

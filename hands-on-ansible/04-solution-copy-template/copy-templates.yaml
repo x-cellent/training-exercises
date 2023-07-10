@@ -1,5 +1,6 @@
 ---
-- hosts: zeus
+- name: 04-solution-copy-template
+  hosts: zeus
   gather_facts: false
   roles:
     - copy-templates
