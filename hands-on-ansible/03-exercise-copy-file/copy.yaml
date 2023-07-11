@@ -1,5 +1,6 @@
 ---
-- hosts: zeus
+- name: 03-exercise-copy-file
+  hosts: zeus
   gather_facts: false
   roles:
     - copy

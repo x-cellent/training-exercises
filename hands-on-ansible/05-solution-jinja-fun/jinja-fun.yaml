@@ -1,5 +1,6 @@
 ---
-- hosts: zeus
+- name: 05-solution-jinja-fun
+  hosts: zeus
   gather_facts: false
   roles:
     - jinja-fun

@@ -1,6 +1,6 @@
 ---
-
-- hosts: zeus,hades
+- name: 06-solution-user-creation
+  hosts: zeus,hades
   tasks:
     - name: Add the user 'bob'
       ansible.builtin.user:
@@ -10,8 +10,8 @@
         shell: /bin/bash
         password: "{{ 'barbara' | password_hash('sha512') }}"
       become: true
-    
-    - name: leave a message for bob
+
+    - name: Leave a message for bob
       ansible.builtin.copy:
         dest: /home/bob/instructions.txt
         owner: bob

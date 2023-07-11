@@ -1,12 +1,13 @@
 ---
 
-- hosts: all
+- name: 01-solution-ping
+  hosts: all
   gather_facts: false
   tasks:
-    - name: ping the host
+    - name: Ping the host
       ansible.builtin.ping:
       register: answer
 
-    - name: print the outcome
+    - name: Print the outcome
       ansible.builtin.debug:
         var: answer

@@ -1,10 +1,10 @@
 ---
-
-- hosts: all
+- name: 07-solution-motd
+  hosts: all
   gather_facts: true
   become: true
   tasks:
-    - name: set the motd file
+    - name: Set the motd file
       ansible.builtin.copy:
         dest: /etc/motd
         backup: true
@@ -19,7 +19,7 @@
           I'm watching you, Bob
       when: ansible_os_family == "Debian"
 
-    - name: set the motd file
+    - name: Set the motd file
       ansible.builtin.copy:
         dest: /etc/motd.d/10-sysinfo.motd
         backup: true

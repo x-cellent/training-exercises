@@ -1,5 +1,6 @@
 ---
-- hosts: zeus
+- name: 04-exercise-copy-template
+  hosts: zeus
   gather_facts: false
   roles:
     - copy-templates

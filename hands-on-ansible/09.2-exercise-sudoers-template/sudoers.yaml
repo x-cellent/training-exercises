@@ -1,25 +1,26 @@
 ---
-- hosts: zeus
+- name: 09.2-exercise-sudoers-template
+  hosts: zeus
   become: true
   tasks:
-    - name: read the vars in
+    - name: Read the vars in
       ansible.builtin.include_vars:
         file: users.yaml
 
-    - name: copy sudoers file
+    - name: Copy sudoers file
       ansible.builtin.template:
         src: sudoers_template.j2
         dest: /etc/sudoers.d/allow_apt_{{ item.name }}
         mode: "0400"
       when: item.can_update | bool
       loop: "{{ user }}"
-    
-    - name: get all sudoers files
+
+    - name: Get all sudoers files
       find:
         path: /etc/sudoers.d/
         patterns: 'allow_apt*'
       register: found_items
-    
-    - name: look at all sudoers files
-      include_tasks: look_at_files.yaml
+
+    - name: Look at all sudoers files
+      ansible.builtin.include_tasks: look_at_files.yaml
       loop: "{{ found_items.files }}"
