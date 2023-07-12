@@ -1,0 +1,5 @@
+---
+- hosts: zeus
+  gather_facts: false
+  roles:
+    - best_practices

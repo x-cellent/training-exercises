@@ -1,0 +1,4 @@
+---
+# handlers file for example-role
+- name: sample handler
+  command: echo "I do something on occassion"

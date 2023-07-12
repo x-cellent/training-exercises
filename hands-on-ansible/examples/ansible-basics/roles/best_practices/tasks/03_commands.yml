@@ -1,0 +1,10 @@
+---
+# bad because it will always replace the file
+- name: Write config file
+  command: echo "a=b" > /sample_config
+
+# good because it will only replace on change
+- name: Write config file
+  template:
+    src: test_template.j2
+    dest: /sample_config

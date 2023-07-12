@@ -1,0 +1,25 @@
+---
+# bad
+- set_fact: is_master={{ true if inventory_hostname in groups['all'] else false }}
+
+# questionable
+- name:     setting environment facts
+  set_fact: is_master={{ true if inventory_hostname in groups['all'] else false }}
+
+# better
+- name:     Figure out cluster masters
+  set_fact: is_master={{ true if inventory_hostname in groups['all'] else false }}
+
+# questionable
+- name:       Install jsonschema 2.6.0 if node is development machine
+  pip:
+    name:     jsonschema
+    version:  "{{ jsonschema_version }}"
+  when:       is_development_machine
+
+# better
+- name:       Install jsonschema
+  pip:
+    name:     jsonschema
+    version:  "{{ jsonschema_version }}"
+  when:       is_development_machine

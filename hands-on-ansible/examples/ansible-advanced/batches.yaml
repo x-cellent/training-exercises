@@ -1,0 +1,12 @@
+- name: Material to Ansible Advanced Batches
+  hosts: all
+  gather_facts: false
+  serial:
+    - 1
+    - 2
+    - "100%"
+  tasks:
+    - name: A sample task
+      command: echo "something"
+      changed_when: False
+      tags: Batches

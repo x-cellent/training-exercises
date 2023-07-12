@@ -1,0 +1,39 @@
+---
+- name: Set some variables for demonstration purposes
+  set_fact:
+    a_string: jinja2TemplatingEngine
+    a_list:
+      - a
+      - b
+      - c
+    nine: 9
+    a_version: "3.14"
+
+- name: Filter example capitalize
+  debug: msg="{{ a_string | capitalize }}"
+
+- name: Filter example join and upper
+  debug: msg="{{ a_list | join(', ') | upper }}"
+
+- name: Test example divisibleby
+  debug: msg="{{ nine is divisibleby(3) }}"
+
+- name: Test example version compare
+  debug: msg="{{ a_version is version_compare('3.20', '>=') }}"
+
+- name: A task that changes something
+  command: echo "Something that changes something"
+  register: result
+
+- name: Test example changed
+  debug: msg="{{ result is changed }}"
+
+- name: Test example changed
+  debug: msg="I will be printed to console because I changed"
+  when: result is changed
+
+- name: Test example for
+  debug: msg="{% for element in a_list %}{{ element }}{% endfor %}"
+
+- name: Test example if
+  debug: msg="{% if 'd' in a_list %}true{% else %}false{% endif %}"

@@ -1,0 +1,18 @@
+---
+- set_fact: 
+    a_condition_is_true: True
+
+- name: A block example
+  block:
+    - name: This is a task
+      debug: msg="1"
+
+    - name: I am a failing task
+      command: /bin/false
+  rescue:
+    - name: A task only executed on failure in the block
+      debug: msg="2"
+  always:
+    - name: A task that gets always executed
+      debug: msg="3"
+  when: a_condition_is_true

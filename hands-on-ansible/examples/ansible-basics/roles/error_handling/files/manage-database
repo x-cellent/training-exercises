@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+
+import argparse
+import errno
+import os
+import pickle
+
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise
+
+
+DATA_STORE = "/tmp/hands-on-ansible/test-data"
+
+def _load_data():
+    if not os.path.exists(DATA_STORE):
+        _create_data_store()
+    with open(DATA_STORE, 'rb') as file:
+        data = pickle.load(file)
+    file.close()
+    return data
+
+
+def _create_data_store():
+    mkdir_p(os.path.dirname(DATA_STORE))
+    with open(DATA_STORE, "wb") as f:
+        pickle.dump(dict(), f)
+
+
+def _write_data(data):
+    with open(DATA_STORE, "wb") as f:
+        pickle.dump(data, f)
+
+
+def create_db(args):
+    name = args.name
+    data = _load_data()
+    if name not in data:
+        data[name] = dict()
+        _write_data(data)
+        print("Database successfully created!")
+    else:
+        print("Database already exists!")
+        exit(1)
+
+
+def remove_db(args):
+    name = args.name
+    data = _load_data()
+
+    if name in data:
+        del data[name]
+        _write_data(data)
+        print("Database successfully removed!")
+    else:
+        print("Database does not exist!")
+        exit(1)
+
+
+def parse():
+    parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers()
+
+    create_parser = subparsers.add_parser("create")
+    remove_parser = subparsers.add_parser("remove")
+
+    create_subparsers = create_parser.add_subparsers()
+    remove_subparsers = remove_parser.add_subparsers()
+
+    db_parser = create_subparsers.add_parser("db")
+    db_parser.set_defaults(entrypoint=create_db)
+    db_parser.add_argument("--name", "-n", type=str, help="the database name", required=True)
+
+    db_parser = remove_subparsers.add_parser("db")
+    db_parser.set_defaults(entrypoint=remove_db)
+    db_parser.add_argument("--name", "-n", type=str, help="the database name", required=True)
+
+    return parser.parse_args()
+
+if __name__ == '__main__':
+    args = parse()
+
+    args.entrypoint(args)

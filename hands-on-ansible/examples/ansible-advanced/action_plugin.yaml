@@ -1,0 +1,9 @@
+---
+- name:         Action Plugin Test
+  hosts:        localhost
+  connection:   local
+  gather_facts: false
+  tasks:
+    - name:         Test Action Plugin
+      console_printer:
+        input:      "Ansible!"

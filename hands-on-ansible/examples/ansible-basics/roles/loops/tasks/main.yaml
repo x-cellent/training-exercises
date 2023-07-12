@@ -1,0 +1,65 @@
+---
+- name: Define some variables
+  set_fact:
+    is_worker_node: True
+    is_monitoring_node: True
+    a_list: [1, 2, 3]
+    master_node: "zeus"
+    ansible_os_family: Debian
+    group_names:
+      - group1
+      - group2
+
+- name: Install Docker on Ubuntu Workers and Monitors
+  debug: msg="I would install Docker"
+  when:
+    - is_worker_node or is_monitoring_node
+    - ansible_os_family == "Debian"
+
+- name: Touch Ansible directory
+  file:
+    path: /etc/ansible/
+    state: directory
+
+- name: Touch sample config file
+  file:
+    path: /etc/ansible/hosts
+    state: touch
+
+- name: Add properties to config file
+  lineinfile:
+    path: /etc/ansible/hosts
+    line: "{{ item }}"
+  loop:
+    - "127.0.0.1"
+    - "{{ master_node }}"
+
+- name: Add properties to config file
+  lineinfile:
+    path: /etc/ansible/hosts
+    line: "{{ item }}"
+  when: item != 'nodes'
+  loop: "{{ group_names }}"
+
+- name: Add properties to config file
+  lineinfile:
+    path: /etc/ansible/hosts
+    line: "{{ host }} # this is host with index {{ index + 1 }}"
+  loop: "{{ groups['all'] }}"
+  loop_control:
+    label: "{{ host }} # with index {{ index + 1 }}"
+    index_var: index
+    loop_var: host
+
+- name: Read file content
+  shell: cat /etc/ansible/hosts
+  register: file_content
+
+- debug:
+    var: file_content
+
+- name: Loop over cartesian product
+  command: /bin/true
+  loop: "{{ ['a', 'b', 'c'] | product([1, 2]) | list }}"
+  loop_control:
+    label: "{{ item.0 }} and {{ item.1 }}"

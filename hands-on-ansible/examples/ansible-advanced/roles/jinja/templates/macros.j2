@@ -1,0 +1,14 @@
+{% macro hostlist() -%}
+  {%- for host in hostvars -%}
+      {{ host }}
+      {%- if not loop.last %},{% endif -%}
+  {%- endfor -%}
+{%- endmacro %}
+{% macro ansible_cfg(forks, force_color=0, retry_files=0) -%}
+[defaults]
+host_key_checking = False
+forks = {{ forks }}
+force_color = {{ force_color }}
+retry_files = {{ retry_files }}
+{%- endmacro %}
+{{ ansible_cfg(100 | random, force_color=1) }}

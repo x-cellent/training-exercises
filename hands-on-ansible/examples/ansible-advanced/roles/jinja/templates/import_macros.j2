@@ -1,0 +1,4 @@
+{% from 'macros.j2' import ansible_cfg, hostlist with context %}
+{{ ansible_cfg(100 | random, force_color=1) }}
+
+{{ hostlist() }}

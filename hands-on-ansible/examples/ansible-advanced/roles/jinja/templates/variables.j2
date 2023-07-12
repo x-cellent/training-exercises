@@ -1,0 +1,29 @@
+{% set elements = [1, 2, 3, 4] %}
+{% set found = False %}
+{% for element in elements -%}
+  {%- if element == 4 -%}
+      {% set found = True %}
+  {%- endif -%}
+{%- endfor %}
+was_found={{ found }}
+
+{% set elements = [1, 2, 3, 4] %}
+{% set found = [] %}
+{% for element in elements -%}
+  {%- if element == 4 -%}
+      {% set _ = found.append(element) %}
+  {%- endif -%}
+{%- endfor %}
+was_found={{ True if found else False }}
+
+{# this does only work with a late jinja2, which is not on the playground server #}
+{#
+{% set elements = [1, 2, 3, 4] %}
+{% set outer_space = namespace(found=False) %}
+{% for element in elements -%}
+  {%- if element == 4 -%}
+      {% set outer_space.found = True %}
+  {%- endif -%}
+{%- endfor %}
+was_found={{ outer_space.found }}
+#}

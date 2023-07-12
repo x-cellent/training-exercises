@@ -1,0 +1,41 @@
+---
+- name: Set some variables
+  set_fact:
+    numbers: [1, 2, 3, 4, 5]
+    something: A string with contents
+
+- name: Variables
+  console_printer:
+    input: "{{ lookup('template', 'variables.j2') }}"
+    border: "---"
+    heading: "Variables"
+
+- name: Whitespace control
+  console_printer:
+    input: "{{ lookup('template', 'whitespace_control.j2') }}"
+    border: "---"
+    heading: "Whitespace Control"
+
+- name: Macros
+  console_printer:
+    input: "{{ lookup('template', 'macros.j2') }}"
+    border: "---"
+    heading: "Macros"
+
+- name: Imported Macros
+  console_printer:
+    input: "{{ lookup('template', 'import_macros.j2') }}"
+    border: "---"
+    heading: "Imported Macros"
+
+- name: Includes
+  console_printer:
+    input: "{{ lookup('template', 'includer.j2') }}"
+    border: "---"
+    heading: "Inclusion"
+
+- name: Inheritance without overrides
+  console_printer:
+    input: "{{ lookup('template', 'template_child.j2') }}"
+    border: "---"
+    heading: "Inheritance"

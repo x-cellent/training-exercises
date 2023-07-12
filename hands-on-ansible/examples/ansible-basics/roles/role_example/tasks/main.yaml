@@ -1,0 +1,29 @@
+---
+# tasks/main.yml
+- name: Copy file from files folder
+  copy:
+    src: test_file.txt
+    dest: /
+
+- name: Read file content
+  shell: cat /test_file.txt
+  register: file_content
+
+- debug:
+    var: file_content
+
+- name: Template a file from templates
+  template:
+    src: test_template.j2
+    dest: /test.conf
+
+- name: Read file content
+  shell: cat /test.conf
+  register: file_content
+
+- debug:
+    var: file_content
+
+- name: A variable from vars
+  debug:
+    var: test_variable

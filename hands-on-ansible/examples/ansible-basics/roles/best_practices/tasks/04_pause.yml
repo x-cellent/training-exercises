@@ -1,0 +1,22 @@
+---
+# restarting sshd cannot be done with the service module as
+# the ssh connection will break during the restart
+- name: Restart ssh daemon
+  shell: sleep 3; /etc/init.d/sshd restart
+  async: 1
+  poll: 0
+
+# bad
+- name: Give daemon some time to initialize
+  pause: seconds=1
+  tags: UsePause
+
+# good
+- name: Wait for connection
+  wait_for_connection:
+    delay: 5
+    timeout: 120
+  tags: NoPause
+
+- name: Continue automation
+  action: ping

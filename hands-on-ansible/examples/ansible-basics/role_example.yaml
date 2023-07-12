@@ -1,0 +1,6 @@
+---
+- hosts: zeus
+  gather_facts: false
+  roles:
+    - role_example
+  become: true

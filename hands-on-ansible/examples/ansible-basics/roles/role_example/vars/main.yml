@@ -1,0 +1,3 @@
+---
+# vars file for example-role
+test_variable: a variable for role vars demonstration
