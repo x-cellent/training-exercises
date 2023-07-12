@@ -1,0 +1,19 @@
+all:
+  hosts:
+    docker:
+      ansible_user: ubuntu
+      ansible_port: 22
+    zeus:
+      ansible_user: ubuntu
+      ansible_port: 22
+    hades:
+      ansible_user: ubuntu
+      ansible_port: 22
+  children:
+    dockerhost:
+      hosts:
+        docker:
+    server:
+      hosts:
+        zeus:
+        hades:
