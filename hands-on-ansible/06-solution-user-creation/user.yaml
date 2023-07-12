@@ -16,6 +16,7 @@
         dest: /home/bob/instructions.txt
         owner: bob
         group: bob
+        mode: "0644"
         content: |
           Hi Bob,
 
