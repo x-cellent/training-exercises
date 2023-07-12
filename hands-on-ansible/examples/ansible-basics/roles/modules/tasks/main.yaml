@@ -1,0 +1,27 @@
+---
+- name: A dirty ssh command
+  raw: "echo 'i do not need Python'"
+  register: output
+
+- debug:
+    msg: "{{ output }}"
+
+- name: A command without shell
+  command: echo "needs python and cannot use a pipe"
+  register: output
+
+- debug:
+    msg: "{{ output }}"
+
+- name: A command with a shell
+  shell: cat /etc/hosts | wc -l # counting lines in the hosts file
+  register: output
+
+- debug:
+    msg: "{{ output }}"
+
+- name: I sleep for some time
+  pause: seconds=5
+
+- name: I sleep for some time
+  command: sleep 5

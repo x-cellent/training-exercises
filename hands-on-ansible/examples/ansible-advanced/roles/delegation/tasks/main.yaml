@@ -1,0 +1,43 @@
+---
+- name:     Elect master node
+  set_fact:
+    is_master:  "{{ True if inventory_hostname == groups['all'][0] else False }}"
+
+- debug:
+    var: is_master
+
+- name:     Group master node
+  group_by: key=masters
+  when:     is_master
+
+- name:     Group slave nodes
+  group_by: key=slaves
+  when:     not is_master
+
+- name:     Set master node name
+  set_fact: master_node={{ groups['masters'][0] }}
+
+- name:         Delegate from a slave
+  command:      "echo {{ inventory_hostname}}"
+  delegate_to:  "{{ master_node }}"
+  when:         not is_master
+
+- name:     Initiate a cluster
+  debug:
+    msg:    "./cluster-init"
+  when:     is_master
+
+- name:         Add nodes to cluster
+  debug:
+    msg:        "./add-cluster-node {{ hostvars[item]['inventory_hostname'] }}"
+  delegate_to:  "{{ master_node }}"
+  run_once:     true
+  loop:   "{{ groups['slaves'] }}"
+
+- name:         Local action delegation
+  local_action:
+    module:     shell echo "a command executed on the control machine"
+  register: output
+
+- debug:
+    var: output

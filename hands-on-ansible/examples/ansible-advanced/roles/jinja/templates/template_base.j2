@@ -1,0 +1,12 @@
+{# This is a template base class #}
+[defaults]
+{% block defaults -%}
+host_key_checking = False
+forks = 20
+retry_files = 0
+{%- endblock %}
+
+[ssh_connection]
+{% block ssh_connection -%}
+ssh_args = -o ControlMaster=auto -o ControlPersist=60s
+{%- endblock %}

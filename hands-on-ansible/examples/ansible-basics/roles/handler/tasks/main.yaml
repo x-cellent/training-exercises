@@ -1,0 +1,5 @@
+---
+- name: A task that changes something
+  command: echo "a change"
+  notify:
+    - sample handler

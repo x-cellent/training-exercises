@@ -1,0 +1,12 @@
+---
+# bad
+- name:     Download sample file from repository
+  get_url:
+    url:    "https://file-examples.com/wp-content/uploads/2017/02/file_example_JSON_1kb.json"
+    dest:   /
+
+# good
+- name:     Download sample file from repository
+  get_url:
+    url:    "{{ repository_server }}/{{ repository_sample_file }}"
+    dest:   /

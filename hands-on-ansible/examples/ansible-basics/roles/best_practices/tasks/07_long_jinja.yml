@@ -1,0 +1,27 @@
+---
+# bad
+- name:     Build config service string for template
+  set_fact:
+    development_services: |-
+      {%- for host in groups['all'] -%}
+        {%- if not is_development_machine -%}
+          {{ hostvars[host]['inventory_hostname'] }}
+          {%- if not loop.last -%},{%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+- name:     Print config service string to console
+  debug:    var=development_services
+
+# good
+- name:     Group non-development machines
+  group_by:
+    key:    non_development_machines
+  when:     not is_development_machine
+
+- name:     Build config service string for template
+  set_fact:
+    non_development_services: "{{ groups['non_development_machines'] | join(',') }}"
+
+- name:     Print config service string to console
+  debug:    var=non_development_services

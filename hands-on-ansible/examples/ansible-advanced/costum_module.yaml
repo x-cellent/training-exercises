@@ -1,0 +1,13 @@
+---
+- name:         Module Test
+  hosts:        localhost
+  connection:   local
+  gather_facts: false
+  tasks:
+    - name:     Execute module
+      my_module:
+        input:  "Test"
+      register: result
+
+    - name:     Print result to console
+      debug:    msg="{{ result }}"

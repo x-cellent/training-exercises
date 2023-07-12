@@ -1,0 +1,12 @@
+---
+- name: Fire and forget
+  command: sleep 10
+  async: 1000 # this value needs to be high enough
+  poll: 0
+  register: result
+
+- name: Wait on fire and forget task
+  async_status: jid={{ result.ansible_job_id }}
+  register: job_result
+  until: job_result.finished
+  retries: 30

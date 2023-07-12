@@ -1,0 +1,36 @@
+---
+- name: Install manage-database script
+  copy:
+    src: manage-database
+    dest: /usr/local/bin
+    mode: "+x"
+
+- name: Cleanup possible prior databases
+  command: manage-database remove db --name hands-on-ansible
+  register: cmd_result
+  changed_when: "'Database successfully removed!' in cmd_result.stdout"
+  failed_when:
+    - cmd_result.rc != 0
+    - "'Database does not exist!' not in cmd_result.stdout"
+
+- name: Create the database
+  command: manage-database create db --name hands-on-ansible
+  ignore_errors: true
+  with_items: [1, 2] # test idempotence
+
+- name: Remove database and do it properly
+  command: manage-database remove db --name hands-on-ansible
+  register: cmd_result
+  changed_when: "'Database successfully removed!' in cmd_result.stdout"
+  failed_when:
+    - cmd_result.rc != 0
+    - "'Database does not exist!' not in cmd_result.stdout"
+
+- name: Create the database properly
+  command: manage-database create db --name hands-on-ansible
+  register: cmd_result
+  changed_when: "'Database successfully created!' in cmd_result.stdout"
+  failed_when:
+    - cmd_result.rc != 0
+    - "'Database already exists!' not in cmd_result.stdout"
+  loop: [1, 2] # test idempotence

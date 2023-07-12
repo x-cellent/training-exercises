@@ -1,0 +1,6 @@
+---
+- hosts: zeus
+  gather_facts: false
+  roles:
+    - error_handling
+  become: true

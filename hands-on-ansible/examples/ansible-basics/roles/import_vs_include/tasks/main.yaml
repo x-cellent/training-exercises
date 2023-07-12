@@ -1,0 +1,13 @@
+---
+- set_fact:
+    ansible_os_family: "Debian"
+
+- name: This is a task import
+  import_tasks: sample_include.yaml
+
+- name: This is a task include
+  include_tasks: sample_include.yaml
+
+- name: Conditions will be applied to all included tasks
+  include_tasks: sample_include.yaml
+  when: ansible_os_family == "RedHat"

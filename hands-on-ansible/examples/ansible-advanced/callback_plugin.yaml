@@ -1,0 +1,15 @@
+---
+- name:         Callback Test
+  hosts:        localhost
+  connection:   local
+  gather_facts: false
+  tasks:
+    - name:         Task 1
+      command:      echo "Task 1"
+      changed_when: False
+
+    - name:     Task 2
+      command:  echo "Task 2"
+
+    - name:     Task 3
+      command:  echo "Task 3"

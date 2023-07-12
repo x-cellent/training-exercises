@@ -1,0 +1,16 @@
+---
+# generally okay
+- name:     Download a larger sample file from webserver
+  get_url:
+    url:    "https://file-examples.com/wp-content/uploads/2017/02/file_example_JSON_1kb.json"
+    dest:   /
+
+# but even better
+- name:     Download a larger sample file from webserver
+  get_url:
+    url:    "https://file-examples.com/wp-content/uploads/2017/02/file_example_JSON_1kb.json"
+    dest:   /
+  register: result
+  until:    result is success
+  retries:  6
+  delay:    10

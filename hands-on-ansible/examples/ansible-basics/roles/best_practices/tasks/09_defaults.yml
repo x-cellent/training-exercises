@@ -1,0 +1,10 @@
+---
+# bad
+- name:     Execute a sample command
+  command:  ls
+  when:     run_a_command is defined and run_a_command
+
+# good
+- name:     Execute a sample command
+  command:  ls
+  when:     run_a_command

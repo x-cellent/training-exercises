@@ -1,0 +1,31 @@
+---
+- name: Task names
+  import_tasks: 01_task_names.yml
+  tags: TaskNames
+
+- name: Commands
+  import_tasks: 03_commands.yml
+  tags: Commands
+  become: true
+
+- name: Pauses
+  import_tasks: 04_pause.yml
+  tags: Pauses
+
+- name: Retries
+  import_tasks: 05_retries.yml
+  tags: Retries
+  become: true
+
+- name: Jinja2
+  import_tasks: 07_long_jinja.yml
+  tags: LongJinja
+
+- name: Defaults
+  import_tasks: 09_defaults.yml
+  tags: Defaults
+
+- name: Environment-specific vars
+  import_tasks: 10_environment_specific_vars.yml
+  tags: Environment
+  become: true

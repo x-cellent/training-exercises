@@ -1,0 +1,43 @@
+{# This will have new lines #}
+{% for number in numbers %}
+  {{ number }}
+{% endfor %}
+
+bla={{ something }}
+
+{# This will not have new lines #}
+{% for number in numbers -%}
+  {{ number }}
+{%- endfor %}
+
+{# Notice that single trailing new lines will be removed #}
+a
+{% if False %}b{% endif %}
+c
+
+{# So, another new line needs to be added #}
+a
+{% if False %}b{% endif %}
+
+c
+
+{# Be aware that this will result into ab #}
+{% if True %}
+a
+{%- endif %}
+b
+
+{# This will not look very clean #}
+{
+    {% if True %}
+        "trim": true
+    {% endif %}
+}
+
+{# But this does #}
+{
+    {% if True -%}
+        "trim": true
+    {%- endif %}
+
+}
