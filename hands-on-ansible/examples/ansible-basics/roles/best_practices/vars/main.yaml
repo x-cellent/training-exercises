@@ -2,4 +2,4 @@
 is_development_machine: false
 run_a_command: true
 repository_server: "https://file-examples.com"
-repository_sample_file: "wp-content/uploads/2017/02/file_example_JSON_1kb.json"
+repository_sample_file: "storage/fe56bbd83564ad7489ca047/2017/02/file_example_JSON_1kb.json"

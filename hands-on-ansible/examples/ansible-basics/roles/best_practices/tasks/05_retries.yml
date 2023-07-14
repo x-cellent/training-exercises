@@ -2,13 +2,13 @@
 # generally okay
 - name:     Download a larger sample file from webserver
   get_url:
-    url:    "https://file-examples.com/wp-content/uploads/2017/02/file_example_JSON_1kb.json"
+    url:    "https://file-examples.com/storage/fe56bbd83564ad7489ca047/2017/02/file_example_JSON_1kb.json"
     dest:   /
 
 # but even better
 - name:     Download a larger sample file from webserver
   get_url:
-    url:    "https://file-examples.com/wp-content/uploads/2017/02/file_example_JSON_1kb.json"
+    url:    "https://file-examples.com/storage/fe56bbd83564ad7489ca047/2017/02/file_example_JSON_1kb.json"
     dest:   /
   register: result
   until:    result is success
