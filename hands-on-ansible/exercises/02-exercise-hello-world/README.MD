@@ -1,6 +1,6 @@
 # Exercsie 2: Greet the World
 
-1. Run the playbook `hello-world` from the project root. `ansible-playbook 01.5-exercise-hello-world/hello-world.yaml -i ansible/inventory.yaml`
+1. Run the playbook `hello-world` from the project root. `ansible-playbook exercises/02-exercise-hello-world/hello-world.yaml -i inventory.yaml`
 2. Move the greeting into the play `vars` and run it again.
 3. In the folder you find a `greetings.yaml`. Include that in your play with `vars_files` and print the var `standard_greeting`.
 4. Create the folders `group_vars/all` inside your exercise folder. Move the `greetings.yaml` there. The play should still work. (Hint: You may need to delete the old import.)

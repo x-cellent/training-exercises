@@ -21,9 +21,8 @@ Make sure to create a backup of the old message.
 - you can use the https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html module
 - the MOTD on ubuntu based systems is stored in `/etc/motd`
 - you can use the `ansible_os_family` variable to check for the current OS
-- for an overview of all availible variables (facts) you can run e.g. `ansible zeus -m setup -i ansible/inventory.yaml`
+- for an overview of all availible variables (facts) you can run e.g. `ansible zeus -m setup -i inventory.yaml`
 
 ## Verification
 Login to two machines like:
-- Ubuntu: `ssh ansibleman@172.16.100.2`
-- Rocky: `ssh ansibleman@172.16.100.7`
+- Ubuntu: `ssh bob@zeus`

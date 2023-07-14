@@ -9,6 +9,6 @@ Bob watched to many youtube tutorials about coding, now his new favourite shell 
 
 # Verification
 
-Verify the completion by logging in as bob via `ssh 172.16.100.4`.  
+Verify the completion by logging in as bob via `ssh bob@zeus`.  
 You should be greeted by the zsh configuration assistant, choose the option `2`  
 Check the current shell with `echo $SHELL`  
