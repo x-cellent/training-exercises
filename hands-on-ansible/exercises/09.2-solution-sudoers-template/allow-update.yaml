@@ -4,7 +4,7 @@
   tasks:
     - name: Read the provided user file
       ansible.builtin.include_vars:
-        file: ../06-exercise-sudoers-template/users.yaml
+        file: ../09.2-exercise-sudoers-template/users.yaml
         name: user
 
     - name: Output user

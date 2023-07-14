@@ -3,7 +3,7 @@
   tasks:
     - name: Read the provided user file
       ansible.builtin.include_vars:
-        file: ../05-exercise-multiple-users/users.yaml
+        file: ../09.1-exercise-multiple-users/users.yaml
         name: users
 
     - name: Ensure all the users are present
