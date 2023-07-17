@@ -2,8 +2,6 @@
 
 1. Finalize "./cowsay/Dockerfile"
 
-2. Finalize "./identicon/Dockerfile" (optional)
-
 ## Solution
 
-The solution can be found in the corresponding Dockerfiles.
+The solution can be found in the corresponding Dockerfile.
