@@ -3,9 +3,8 @@
 1. start the created Images
 
     - x-cellent.com/whalesay
-    - x-cellent.com/identicon
 
-2. Find the port for the run command to the docker host 
+2. Find the port for the run command to the docker host
 
 3. Verify the port mapping
 
@@ -19,4 +18,4 @@
 
 ## Solution
 
-Inspect the corresponding `docker-run.sh` files.
+Inspect the corresponding `docker-run.sh` file.

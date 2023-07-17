@@ -3,12 +3,11 @@
 1. Build the images for the following Dockerfiles:
 
     - ./cowsay/Dockerfile
-    - ./identicon/Dockerfile (optional)
 
 1. You should be able to list the local images
 
 1. Write the corresponding build-commands in the `docker-build.sh` file
 
-## Solution:
+## Solution
 
 The commands for the exercise can be found in the corresponding `docker-build.sh` files.

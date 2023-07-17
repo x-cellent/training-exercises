@@ -3,7 +3,6 @@
 1. start the created Images
 
     - x-cellent.com/whalesay
-    - x-cellent.com/identicon
 
 2. Find the port for the run command to the docker host
 
@@ -21,6 +20,6 @@
 
 The images needs to be built already.
 
-```
+```bash
 ./docker-build.sh
 ```

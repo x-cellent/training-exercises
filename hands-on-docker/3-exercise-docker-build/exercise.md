@@ -3,7 +3,6 @@
 1. Build the images for the following Dockerfiles:
 
     - ./cowsay/Dockerfile
-    - ./identicon/Dockerfile (optional)
 
 2. You should be able to list the local images
 
