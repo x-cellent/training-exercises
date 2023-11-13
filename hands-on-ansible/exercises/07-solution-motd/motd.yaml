@@ -1,6 +1,6 @@
 ---
 - name: 07-solution-motd
-  hosts: all
+  hosts: zeus,hades
   gather_facts: true
   become: true
   tasks:

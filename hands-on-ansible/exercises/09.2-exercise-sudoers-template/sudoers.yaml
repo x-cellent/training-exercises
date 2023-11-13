@@ -1,6 +1,6 @@
 ---
 - name: 09.2-exercise-sudoers-template
-  hosts: zeus
+  hosts: zeus,hades
   become: true
   tasks:
     - name: Read the vars in
