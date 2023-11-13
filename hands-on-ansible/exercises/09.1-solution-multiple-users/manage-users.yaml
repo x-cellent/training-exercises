@@ -1,5 +1,5 @@
 - name: 09.1-solution-multiple-users
-  hosts: all
+  hosts: zeus,hades
   tasks:
     - name: Read the provided user file
       ansible.builtin.include_vars:

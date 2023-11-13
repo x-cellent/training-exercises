@@ -37,6 +37,6 @@ Share images, automate workflows, and more with a free Docker ID:
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
-$ docker-compose version
+$ docker compose version
 Docker Compose version v2.11.1
 ```

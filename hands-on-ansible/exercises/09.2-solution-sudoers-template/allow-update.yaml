@@ -1,6 +1,6 @@
 ---
 - name: 09.2-solution-sudoers-template
-  hosts: all
+  hosts: zeus,hades
   tasks:
     - name: Read the provided user file
       ansible.builtin.include_vars:
