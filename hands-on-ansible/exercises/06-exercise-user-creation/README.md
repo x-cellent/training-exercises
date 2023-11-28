@@ -18,4 +18,4 @@ Leave a message for bob in the form of a text file in his home directory. Make s
 
 ## Verification
 
-Try logging in via `ssh bob@172.16.100.2`
+Try logging in via `ssh bob@zeus`
